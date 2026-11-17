@@ -42,7 +42,7 @@ const App = () => {
   return (
     <div>
       <div>
-        <h1>give feedback</h1>
+        <h1>Give feedback</h1>
         <button onClick={()=> setGood(prev=> prev + 1)}>good</button>
         <button onClick={()=> setNeutral(prev=> prev + 1)}>neutral</button>
         <button onClick={()=> setBad(prev=> prev + 1)}>bad</button>
