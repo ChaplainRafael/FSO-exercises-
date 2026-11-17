@@ -4,7 +4,8 @@ const Statistics = (props) => {
   const good = props.good;
   const bad = props.bad;
   const neutral = props.neutral;
-  const total = good+bad+neutral;
+
+  const total = Math.ceil(good+bad+neutral);
 
   const goodScore = good * 1;
   const neutralScore = neutral * 0;
@@ -15,13 +16,16 @@ const Statistics = (props) => {
 
   return(
     <div>
-        <h1>statistics </h1>
-        <h4>good: {good}</h4>
-        <h4>bad: {bad}</h4>
-        <h4>neutral: {neutral}</h4>
-        <h4>all: {total}</h4>
-        <h4>average: {total === 0 ? 0 : average}</h4>
-        <h4>positive: {total === 0 ? 0 : positive *100}%</h4>
+      {total=== 0 ? <h1>"No Feedback given"</h1> : <div>
+          <h1>statistics </h1>
+          <h4>good: {good}</h4>
+          <h4>bad: {bad}</h4>
+          <h4>neutral: {neutral}</h4>
+          <h4>all: {total}</h4>
+          <h4>average: {total === 0 ? 0 : average}</h4>
+          <h4>positive: {total === 0 ? 0 : positive *100}%</h4>
+        </div>}
+      
       </div>
   )
 }
@@ -43,7 +47,7 @@ const App = () => {
         <button onClick={()=> setNeutral(prev=> prev + 1)}>neutral</button>
         <button onClick={()=> setBad(prev=> prev + 1)}>bad</button>
       </div>
-      <Statistics good={good} bad={bad} neutral={neutral}/>
+      <Statistics good={good} bad={bad} neutral={neutral} />
     </div>
   )
 }
